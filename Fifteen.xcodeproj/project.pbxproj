@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551FD8FE1BF9FB5D009FD5B0 /* BlockSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551FD8FD1BF9FB5D009FD5B0 /* BlockSprite.swift */; };
+		551FD9001BFA0321009FD5B0 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551FD8FF1BFA0321009FD5B0 /* GameModel.swift */; };
 		55BF58871BF62A460049CD07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF58861BF62A460049CD07 /* AppDelegate.swift */; };
 		55BF588B1BF62A460049CD07 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF588A1BF62A460049CD07 /* GameScene.swift */; };
 		55BF588D1BF62A460049CD07 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF588C1BF62A460049CD07 /* GameViewController.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		551FD8FD1BF9FB5D009FD5B0 /* BlockSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockSprite.swift; sourceTree = "<group>"; };
+		551FD8FF1BFA0321009FD5B0 /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		55BF58831BF62A460049CD07 /* Fifteen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifteen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BF58861BF62A460049CD07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55BF588A1BF62A460049CD07 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -97,8 +101,10 @@
 				55BF589C1BF63A200049CD07 /* Resources */,
 				55BF58861BF62A460049CD07 /* AppDelegate.swift */,
 				55BF588A1BF62A460049CD07 /* GameScene.swift */,
-				55BF588C1BF62A460049CD07 /* GameViewController.swift */,
+				551FD8FD1BF9FB5D009FD5B0 /* BlockSprite.swift */,
+				551FD8FF1BFA0321009FD5B0 /* GameModel.swift */,
 				55BF588E1BF62A460049CD07 /* Main.storyboard */,
+				55BF588C1BF62A460049CD07 /* GameViewController.swift */,
 				55BF58911BF62A460049CD07 /* Assets.xcassets */,
 				55BF58931BF62A460049CD07 /* LaunchScreen.storyboard */,
 				55BF58961BF62A460049CD07 /* Info.plist */,
@@ -222,8 +228,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551FD9001BFA0321009FD5B0 /* GameModel.swift in Sources */,
 				55BF588B1BF62A460049CD07 /* GameScene.swift in Sources */,
 				55BF588D1BF62A460049CD07 /* GameViewController.swift in Sources */,
+				551FD8FE1BF9FB5D009FD5B0 /* BlockSprite.swift in Sources */,
 				55BF58871BF62A460049CD07 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +382,7 @@
 				55BF589B1BF62A460049CD07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

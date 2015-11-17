@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
 
+    let model: GameModel
 //    let background: SKNode
     
     required init(coder aDecoder: NSCoder) {
@@ -17,9 +18,9 @@ class GameScene: SKScene {
     }
 
     override init(size: CGSize) {
-        super.init(size: size)
+        model = GameModel()
         
-//        anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        super.init(size: size)
         
         let background = SKSpriteNode(color: SKColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0), size: frame.size)
         background.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
@@ -33,29 +34,23 @@ class GameScene: SKScene {
         board.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         board.zPosition = 0
         addChild(board)
-        
+
         let blockWidth = size.width / 4.0
         let blockSize = CGSize(width: blockWidth, height: blockWidth)
         
-        for index in 0 ..< 16 {
-            let spriteTexture = SKTexture(imageNamed: "Texture_\(index != 15 ? index+1 : 0).png")
-            let sprite = SKSpriteNode(texture: spriteTexture, size: blockSize)
-            
-            sprite.anchorPoint = CGPoint(x: 0.0, y: 1.0)
-            let position = CGPoint(x: -Int(size.width) / 2 + Int(blockWidth) * (index % 4), y: Int(size.width) / 2 - Int(blockWidth) * (index / 4))
-            sprite.position = position
-            
-            board.addChild(sprite)
+        for row in 0..<4 {
+            for column in 0..<4 {
+                let index = model.boardModel[row, column]
+                if index == 0 {
+                    continue
+                }
+                
+                let blockSprite = BlockSprite(index: index, size: blockSize, boardSize: board.size, gameModel: model)
+                blockSprite.elementPosition = CGPoint(x: column, y: row)
+                
+                board.addChild(blockSprite)
+            }
         }
-        
-//        let node = SKLabelNode(text: "Hello World")
-//        node.fontColor = SKColor.redColor()
-//        node.fontSize = 50.0
-//        node.fontName = "AvenirNext-Regular"
-//        
-//        node.position = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
-//        node.zPosition = 5
-//        addChild(node)
     }
     
     override func didMoveToView(view: SKView) {
@@ -64,6 +59,12 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
+        
+        
+        
+        if let touch = touches.first {
+            print(touch.view)
+        }
     }
    
     override func update(currentTime: CFTimeInterval) {
