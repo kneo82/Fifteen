@@ -43,14 +43,14 @@ struct Array2D<T> {
 
 class GameModel {
     var boardModel: Array2D<Int>
-    let rows = 4
-    let columns = 4
+    let rows: Int
+    let columns: Int
     
     var emptyBlock: (row: Int, column: Int) = (0, 0)
     
     var isWin: Bool {
-        for row in 0..<4 {
-            for column in 0..<4 {
+        for row in 0..<rows {
+            for column in 0..<columns {
                 var index = (row * columns) + column + 1;
                 index = index < (rows * columns) ? index : 0
                 
@@ -63,11 +63,18 @@ class GameModel {
         return true
     }
     
-    init() {
+    convenience init() {
+        self.init(rows: 4, columns: 4)
+    }
+    
+    init(rows: Int, columns: Int) {
+        self.rows = rows
+        self.columns = columns
+        
         boardModel = Array2D(rows: rows, columns: columns, repeatedValue: 0)
         
-        for row in 0..<4 {
-            for column in 0..<4 {
+        for row in 0..<rows {
+            for column in 0..<columns {
                 var index = (row * columns) + column + 1;
                 index = index < (rows * columns) ? index : 0
                 
@@ -103,8 +110,8 @@ class GameModel {
     
     func shuflle() {
         for _ in 0...10000 {
-            let row = random() % 4
-            let column = random() % 4
+            let row = random() % rows
+            let column = random() % columns
             
             moveBlock(row, column: column)
         }

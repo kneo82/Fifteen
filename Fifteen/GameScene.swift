@@ -19,7 +19,7 @@ class GameScene: SKScene {
     }
 
     override init(size: CGSize) {
-        model = GameModel()
+        model = GameModel(rows: 10, columns: 10)
         
         let texture = SKTexture(imageNamed: "Background2.jpg")
         let board = SKSpriteNode(texture: texture, size: CGSize(width: size.width, height: size.width))
@@ -64,11 +64,11 @@ class GameScene: SKScene {
     func fillBoard() {
         board.removeAllChildren()
         
-        let blockWidth = size.width / 4.0
+        let blockWidth = size.width / CGFloat(model.columns)
         let blockSize = CGSize(width: blockWidth, height: blockWidth)
         
-        for row in 0..<4 {
-            for column in 0..<4 {
+        for row in 0..<model.rows {
+            for column in 0..<model.columns {
                 let index = model.boardModel[row, column]
                 if index == 0 {
                     continue

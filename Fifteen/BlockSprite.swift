@@ -20,8 +20,8 @@ class BlockSprite: SKSpriteNode {
     var elementPosition: CGPoint {
         get {
             let x = ((boardSize.width / 2.0) + position.x) / size.width
-            let y = ((boardSize.height / 4.0) - position.y) / size.height
-            
+            let y = ((boardSize.height / 2.0) - position.y - size.height) / size.height
+            print("row: \(y) column: \(x)")
             return CGPoint(x: x, y: y)
         }
         
@@ -72,7 +72,7 @@ class BlockSprite: SKSpriteNode {
         let duration = animated ? durationAnimation : 0.0;
         
         let x = -(boardSize.width / 2.0) + CGFloat(column) * size.width
-        let y = (boardSize.height / 4.0) - CGFloat(row) * size.height
+        let y = +(boardSize.height / 2.0) - CGFloat(row) * size.height - size.height
         
         let action = SKAction.sequence([SKAction.moveTo(CGPoint(x: x, y: y), duration: duration), SKAction.runBlock({ () -> Void in
             self.position = CGPoint(x: x, y: y)
