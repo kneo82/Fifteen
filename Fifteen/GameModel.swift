@@ -78,6 +78,8 @@ class GameModel {
                 }
             }
         }
+        
+        shuflle()
     }
     
     func canMove(index: Int) -> Bool {
@@ -96,6 +98,15 @@ class GameModel {
         if canMove(row, column: column) {
             boardModel.swap(row, column1: column, row2: emptyBlock.row, column2: emptyBlock.column)
             emptyBlock = (row: row, column: column)
+        }
+    }
+    
+    func shuflle() {
+        for _ in 0...10000 {
+            let row = random() % 4
+            let column = random() % 4
+            
+            moveBlock(row, column: column)
         }
     }
 }

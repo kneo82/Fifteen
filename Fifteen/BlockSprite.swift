@@ -34,7 +34,6 @@ class BlockSprite: SKSpriteNode {
         let sizeSprite = CGSize( width: size.width - 2.0, height: size.height - 2.0)
         self.boardSize = boardSize
         self.index = index
-        print("index: \(index)")
         self.model = gameModel
         
         textureName = "Texture_\(index).png"

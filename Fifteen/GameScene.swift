@@ -11,6 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
 
     let model: GameModel
+    var board: SKSpriteNode
 //    let background: SKNode
     
     required init(coder aDecoder: NSCoder) {
@@ -20,6 +21,14 @@ class GameScene: SKScene {
     override init(size: CGSize) {
         model = GameModel()
         
+        let texture = SKTexture(imageNamed: "Background2.jpg")
+        let board = SKSpriteNode(texture: texture, size: CGSize(width: size.width, height: size.width))
+        board.position = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
+        board.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        board.zPosition = 0
+        
+        self.board = board
+        
         super.init(size: size)
         
         let background = SKSpriteNode(color: SKColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0), size: frame.size)
@@ -28,13 +37,33 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
-        let texture = SKTexture(imageNamed: "Background2.jpg")
-        let board = SKSpriteNode(texture: texture, size: CGSize(width: size.width, height: size.width))
-        board.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
-        board.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        board.zPosition = 0
         addChild(board)
 
+        fillBoard()
+    }
+    
+    override func didMoveToView(view: SKView) {
+        /* Setup your scene here */
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+       /* Called when a touch begins */
+    }
+   
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+        if model.isWin {
+            print("WINNNN !!!!!")
+            
+            model.shuflle()
+            
+            fillBoard()
+        }
+    }
+    
+    func fillBoard() {
+        board.removeAllChildren()
+        
         let blockWidth = size.width / 4.0
         let blockSize = CGSize(width: blockWidth, height: blockWidth)
         
@@ -51,23 +80,5 @@ class GameScene: SKScene {
                 board.addChild(blockSprite)
             }
         }
-    }
-    
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
-        
-        
-        if let touch = touches.first {
-            print(touch.view)
-        }
-    }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
     }
 }
